@@ -1,4 +1,4 @@
-// read existing todos from local storage
+// Fetch existing todos from local storage
 const getSavedTodos = function() {
     const todosJSON = localStorage.getItem('todos')
 
@@ -12,6 +12,17 @@ const getSavedTodos = function() {
 // Save todos to local storage
 const saveTodos = function(todos) {
     localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+// Delete a todo from local storage
+const removeTodo = function(id){
+    const todoIndex = todos.findIndex(function(todo){
+        return todo.id === id
+    })
+
+    if(todoIndex > -1) {
+        todos.splice(todoIndex,1)
+    }
 }
 
 // Render application notes
@@ -35,27 +46,44 @@ const renderTodos = function(todos, filters){
     })
 
     document.querySelector('#todos').innerHTML = ''
-
-    // const summary = document.createElement('h2')
-    // summary.textContent = `You have ${incompleteTodos.length} todos left`
     document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos))
 
     filteredTodos.forEach(function(todo){
         const p = generateTodoDOM(todo)
-        // p.textContent = todo.text
         document.querySelector('#todos').appendChild(p)
     })
 }
 
 // Generate the DOM structure for a note
 const generateTodoDOM = function(todo){
-    const todoEl = document.createElement('p')
+    const todoEl = document.createElement('div')
+    const checkbox = document.createElement('input')
+    const textEl = document.createElement('span')
+    const removeButton = document.createElement('button')
 
+
+    // Setup the checkbox
+    checkbox.setAttribute('type', 'checkbox')
+    todoEl.appendChild(checkbox)    
+
+
+   // Setup the todo title text
     if(todo.text.length > 0){
-        todoEl.textContent = todo.text
+        textEl.textContent = todo.text
     } else{
-        todoEl.textContent = 'Unnamed todo'
+        textEl.textContent = 'Unnamed todo'
     }
+
+    todoEl.appendChild(textEl)
+    // Setup the remove button
+    removeButton.textContent = 'x'
+    todoEl.appendChild(removeButton)
+    removeButton.addEventListener('click', function(){
+        console.log(todo.id)
+        removeTodo(todo.id)
+        saveTodos(todos)
+        renderTodos(todos, filters)
+    })
 
     return todoEl
 }
