@@ -1,7 +1,8 @@
 let notes = getSavedNotes()
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy: 'byEdited'
 }
 
 renderNotes(notes, filters)
@@ -9,10 +10,11 @@ renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function (e) {
     const idVar = uuidv4()
-    const timestamp = moment()
+    const timestamp = moment().valueOf()
     notes.push({
          id: idVar,
          createdAt: timestamp,
+         updatedAt: timestamp,
          title: '',
          body: ''
     })
@@ -27,7 +29,8 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 })
 
 document.querySelector('#filter-by').addEventListener('change', function (e) {
-    console.log(e.target.value)
+    filters.sortBy = e.target.value
+    renderNotes(notes,filters)
 })
 
 
@@ -37,10 +40,4 @@ window.addEventListener('storage', function(e){
         renderNotes(notes, filters)
     }
 })
-
-const timestamp = moment()
-const birthday = moment([1959, 07, 18, 2]); 
-console.log(timestamp.toString())
-console.log(timestamp.from(birthday))
-console.log(timestamp > birthday)
 

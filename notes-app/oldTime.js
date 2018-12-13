@@ -42,3 +42,9 @@ birthday.year(1959).month(06).day(18)
 // console.log(birthday.toString())
 console.log(birthday.format("MMM D, YYYY"))
 console.log(birthday.fromNow())
+
+const timestamp = moment()
+const birthday = moment([1959, 07, 18, 2]); 
+console.log(timestamp.toString())
+console.log(timestamp.from(birthday))
+console.log(timestamp > birthday)

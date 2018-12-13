@@ -1,7 +1,7 @@
 const titleElement = document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
 const removeElement = document.querySelector('#remove-note')
-const createdAtElement = document.querySelector('#note-created')
+const lastEdited = document.querySelector('#last-edited')
 
 const noteId = location.hash.substring(1)
 let notes = getSavedNotes()
@@ -15,20 +15,26 @@ if(note === undefined) {
 
 titleElement.value = note.title
 bodyElement.value = note.body
-createdAtElement.value = note.createdAt
+
+// var now = moment(); //todays date
+// var lastEdit = note.updatedAt; // last edited date
+// var duration = moment.duration(now.diff(lastEdit));
+// var hours = duration.asHours().toFixed(4);
+
+// lastEdited.textContent = `Last edited ${hours} hours ago`
+lastEdited.textContent = generateLastEdited(note.updatedAt)
 
 titleElement.addEventListener('input', function (e) {
     note.title = e.target.value
+    note.updatedAt = moment().valueOf()
+    lastEdited.textContent = generateLastEdited(note.updatedAt)
     saveNotes(notes)
 })
 
 bodyElement.addEventListener('input', function (e) {
     note.body = e.target.value
-    saveNotes(notes)
-})
-
-createdAtElement.addEventListener('input', function (e) {
-    note.createdAt = e.target.value
+    note.updatedAt = moment().valueOf()
+    lastEdited.textContent = generateLastEdited(note.updatedAt)
     saveNotes(notes)
 })
 
@@ -57,7 +63,6 @@ window.addEventListener('storage', function(e){
         
         titleElement.value = note.title
         bodyElement.value = note.body
-        note.createdAt.value = note.value
+        lastEdited.textContent = generateLastEdited(note.updatedAt)
     }
 })
-
