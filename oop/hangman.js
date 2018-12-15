@@ -7,9 +7,9 @@ const Hangman = function(word, remainingGuesses){
 }
 
 Hangman.prototype.getPuzzle = function(){
-    var array = [this.word];
-    console.log('-- ' + array[0][1])
-    console.log('-> ' + array[0].length)
+    let array = [this.word];
+    // console.log(array[0][1])
+    // console.log('-> ' + array[0].length)
 
     return array
 }
@@ -17,9 +17,28 @@ Hangman.prototype.getPuzzle = function(){
 
 const game = new Hangman('Cat', 3)
 
-const guess = new Hangman('Timo')
+const guess = new Hangman('Catt')
+let baseWord = []
 
-console.log(game.getPuzzle())
-console.log(guess.word + ' ' + guess.wordLen)
+if (game.word === guess.word){
+    console.log('arvasit oikein')
+} else {
+    let i = 0
 
+    while (i < game.wordLen) {
+        baseWord.push('*')
+        i++;
+      }
+
+
+}
+console.log('-> ' + game.getPuzzle())
+console.log(baseWord)
+
+let i = 0
+while (i < game.wordLen) {
+    console.log(baseWord[i])
+    process.stdout.write(baseWord[i]);
+    i++;
+  }
 
