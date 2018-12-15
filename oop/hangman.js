@@ -8,7 +8,8 @@ const Hangman = function(word, remainingGuesses){
 
 Hangman.prototype.getPuzzle = function(){
     var array = [this.word];
-    console.log(array[0][1])
+    console.log('-- ' + array[0][1])
+    console.log('-> ' + array[0].length)
 
     return array
 }
