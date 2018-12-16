@@ -1,4 +1,4 @@
-
+var readline = require('readline')
 
 const Hangman = function(word, remainingGuesses){
     this.word = word.toLowerCase()
@@ -14,19 +14,33 @@ Hangman.prototype.getPuzzle = function(){
 
 
 const game = new Hangman('Cat', 3)
-const guess = new Hangman('Cat')
+var readline = readline('readline')
+let ask = readline.createInterface(process.stdin, process.stdout)
+
+ask.question(`Give a guess of ${game.length} word`, function(answer){
+    ask = answer
+    console.log(answer)
+})
+
+// const guess = new Hangman('Cat')
 
 let baseWord = []
 
 let yourGuesses = function() {
     if (game.word === guess.word){
         console.log('arvasit oikein')
-    // } else if (game.word !== guess.word){
-    //     let i = 0
-    //     while (i < guess.length) {
-    //         baseWord.push(guess.word[i])
-    //         i++;
-    //         }
+        baseWord = game.word
+    } else if (game.word !== guess.word){
+        let i = 0
+        while (i < game.wordLen) {
+            if(game.word[i] === guess.word[i]) {
+                baseWord.push(guess.word[i])
+            } else {
+                baseWord.push('*')
+            }
+
+            i++;
+            }
 
     } else {
         let i = 0
