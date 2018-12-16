@@ -14,15 +14,7 @@ Hangman.prototype.getPuzzle = function(){
 
 
 const game = new Hangman('Cat', 3)
-var readline = readline('readline')
-let ask = readline.createInterface(process.stdin, process.stdout)
-
-ask.question(`Give a guess of ${game.length} word`, function(answer){
-    ask = answer
-    console.log(answer)
-})
-
-// const guess = new Hangman('Cat')
+const guess = new Hangman('cbt')
 
 let baseWord = []
 
@@ -66,12 +58,20 @@ yourGuesses(guess)
 
 // howManyGuesses()
 
+
 i = 0
 process.stdout.write(`Guessed `)
-
 while (i < game.wordLen-1) {
-    process.stdout.write(`"${baseWord[i]}",` );
+    process.stdout.write(`"${guess.word[i]}",` );
     i++;
-  }
-  process.stdout.write(` and "${baseWord[i]}"?`)
-  process.stdout.write(` -> ${game.getPuzzle()} `)
+}
+process.stdout.write(` and "${guess.word[i]}"?`)
+
+
+process.stdout.write(` -> `)
+i = 0
+while (i < game.wordLen-1) {
+    process.stdout.write(`${baseWord[i]}` );
+    i++;
+}
+process.stdout.write(`${baseWord[i]}`)
