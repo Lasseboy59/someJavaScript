@@ -1,7 +1,7 @@
 var readline = require('readline')
 
 const Hangman = function(word, remainingGuesses){
-    this.word = word.toLowerCase()
+    this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
     this.wordLen = word.length
 }
@@ -13,8 +13,8 @@ Hangman.prototype.getPuzzle = function(){
 }
 
 
-const game = new Hangman('Cat', 3)
-const guess = new Hangman('cbt')
+const game = new Hangman('New Jersey', 3)
+const guess = new Hangman('New Antonio',4)
 
 let baseWord = []
 
@@ -61,7 +61,7 @@ yourGuesses(guess)
 
 i = 0
 process.stdout.write(`Guessed `)
-while (i < game.wordLen-1) {
+while (i < guess.word.length-1) {
     process.stdout.write(`"${guess.word[i]}",` );
     i++;
 }
