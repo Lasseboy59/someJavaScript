@@ -37,6 +37,7 @@ Hangman.prototype.addGuess = function(guess) {
 
 }
 
+/*************** separate **********************/
 
 const game1 = new Hangman('Cat', 2)
 
@@ -50,16 +51,12 @@ window.addEventListener('keypress', function (e) {
     console.log(game1.remainingGuesses)
 })
 
-
-
 // const game2 = new Hangman('New Jersey', 4)
 // console.log(game2.getPuzzle()) // **w ******
 // game2.addGuess('w')
 // console.log('Remaining guesses: ' + game2.remainingGuesses)
 
-
-const game2 = new Hangman('New Jersey', 4)
-game2.addGuess('w')
-console.log(game2.getPuzzle()) // **w ******
-
-console.log('Remaining guesses: ' + game2.remainingGuesses)
+// const game2 = new Hangman('New Jersey', 4)
+// game2.addGuess('w')
+// console.log(game2.getPuzzle()) // **w ******
+// console.log('Remaining guesses: ' + game2.remainingGuesses)
