@@ -3,7 +3,30 @@ const Hangman = function(word, remainingGuesses){
     this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = []
+    this.status = 'playing'
 }
+
+Hangman.prototype.getStatus = function(){
+
+    let finished = true
+
+    this.word.forEach((letter) => {
+        if(this.guessedLetters.includes(letter)) {
+
+        } else {
+            finished = false
+        }
+    })
+
+    if(this.remainingGuesses === 0){
+        this.status = 'failed'
+    } else if(finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
+    }
+}
+
 
 Hangman.prototype.getPuzzle = function(){
     let puzzle = ''
@@ -19,7 +42,6 @@ Hangman.prototype.getPuzzle = function(){
     return puzzle
 }
 
-
 Hangman.prototype.addGuess = function(guess) {
     this.guess = guess.toLowerCase()
     const isUnigue = !this.guessedLetters.includes(guess)
@@ -32,4 +54,7 @@ Hangman.prototype.addGuess = function(guess) {
     if(isUnigue && isBadGuess){
         this.remainingGuesses--
     }
+
+    this.getStatus()
 }
+

@@ -18,34 +18,18 @@ const game1 = new Hangman('Cat', 2)
 
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
+const statusEl = document.querySelector('#status')
 puzzleEl.textContent = game1.getPuzzle()
 guessesEl.textContent = game1.remainingGuesses
-// puzzleEl.appendChild(puzzle)
-// guessesEl.appendChild(guesses)
+console.log(game1.status)
+statusEl.textContent =  game1.getStatus()
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.addGuess(guess)
-    console.log(game1.getPuzzle())
-    console.log(game1.remainingGuesses)
-    let puzzle = game1.getPuzzle()
-    puzzleEl.textContent = puzzle
-    let guesses = game1.remainingGuesses
+    puzzleEl.textContent = game1.getPuzzle()
     guessesEl.textContent = game1.remainingGuesses
-
-    showOnPage(puzzle, guesses)
+    console.log(game1.status)
+    statusEl.textContent = game1.statusEl
+    statusEl.textContent =  game1.getStatus()
 })
-
-
-// Generate the DOM structure for a note
-const showOnPage = function(puzzle, guesses) {
-    document.querySelector('#notes').innerHTML = ''
-    const element = document.getElementById('notes')
-    var linebreak = document.createElement('br');
-
-    var textNode = document.createTextNode('The word: ' + puzzle);
-    element.appendChild(textNode);
-    element.appendChild(linebreak);
-    textNode = document.createTextNode('Number of guesses ' + guesses);
-    element.appendChild(textNode);
-}
