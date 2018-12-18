@@ -22,7 +22,7 @@ const statusEl = document.querySelector('#status')
 puzzleEl.textContent = game1.getPuzzle()
 guessesEl.textContent = game1.remainingGuesses
 console.log(game1.status)
-statusEl.textContent =  game1.getStatus()
+statusEl.textContent =  game1.getGameStatus()
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
@@ -30,6 +30,5 @@ window.addEventListener('keypress', function (e) {
     puzzleEl.textContent = game1.getPuzzle()
     guessesEl.textContent = game1.remainingGuesses
     console.log(game1.status)
-    statusEl.textContent = game1.statusEl
-    statusEl.textContent =  game1.getStatus()
+    statusEl.textContent =  game1.getGameStatus()
 })

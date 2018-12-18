@@ -47,18 +47,30 @@ Hangman.prototype.getPuzzle = function(){
 }
 
 Hangman.prototype.addGuess = function(guess) {
-    this.guess = guess.toLowerCase()
-    const isUnigue = !this.guessedLetters.includes(guess)
-    const isBadGuess = !this.word.includes(guess)
+    if(this.status === 'playing') {
+        this.guess = guess.toLowerCase()
+        const isUnigue = !this.guessedLetters.includes(guess)
+        const isBadGuess = !this.word.includes(guess)
+        
+        if(!this.guessedLetters.includes(guess)){
+            this.guessedLetters.push(guess)
+        }
     
-    if(!this.guessedLetters.includes(guess)){
-        this.guessedLetters.push(guess)
+        if(isUnigue && isBadGuess){
+            this.remainingGuesses--
+        }
+        this.getStatus()
     }
+}
 
-    if(isUnigue && isBadGuess){
-        this.remainingGuesses--
-    }
+Hangman.prototype.getGameStatus = function() {
+    if(this.status === 'playing'){
+        return `Playing -> Guesses left: ${this.remainingGuesses}.`
+    } else if (this.status === 'failed'){
+        return `Failed -> Nice try! The word was: "${this.word.join('')}".`
+     } else {
+        return `Finished -> Great work! You guessed the word.`
+     }
 
-    this.getStatus()
 }
 
