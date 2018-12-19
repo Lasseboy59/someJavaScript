@@ -14,21 +14,21 @@
 // const otherProduct = new String('Phone')
 // console.log(otherProduct)
 
-const game1 = new Hangman('Car Parts', 2)
+// HTTP (Hypertext Transfer Protocol)
+// Request - What do we want to do
+// Response - What was actually done
+
+const game1 = new Hangman('Cat', 2)
 
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
 const statusEl = document.querySelector('#status')
 puzzleEl.textContent = game1.puzzle
-guessesEl.textContent = game1.remainingGuesses
-console.log(game1.status)
 statusEl.textContent =  game1.GameStatus
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.addGuess(guess)
     puzzleEl.textContent = game1.puzzle
-    guessesEl.textContent = game1.remainingGuesses
-    console.log(game1.status)
     statusEl.textContent =  game1.GameStatus
 })
