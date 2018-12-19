@@ -14,7 +14,7 @@
 // const otherProduct = new String('Phone')
 // console.log(otherProduct)
 
-const game1 = new Hangman('Cat', 2)
+const game1 = new Hangman('Car Parts', 2)
 
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')

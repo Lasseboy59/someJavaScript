@@ -11,7 +11,7 @@ class Hangman {
 
     getStatus(){
         const finished = this.word.every((letter) => {
-            return this.guessedLetters.includes(letter)
+            return this.guessedLetters.includes(letter) || letter === ' '
         })
         
         if(this.remainingGuesses === 0){
