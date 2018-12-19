@@ -23,7 +23,7 @@ class Hangman {
         }
     }
 
-    getPuzzle(){
+    get puzzle(){
         let puzzle = ''
 
         this.word.forEach((letter) => {
@@ -54,7 +54,7 @@ class Hangman {
         }
     }
 
-    getGameStatus(){
+    get GameStatus(){
         if(this.status === 'playing'){
             return `Playing -> Guesses left: ${this.remainingGuesses}.`
         } else if (this.status === 'failed'){
@@ -131,4 +131,3 @@ class Hangman {
 //      }
 
 // }
-

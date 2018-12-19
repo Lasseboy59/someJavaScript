@@ -1,4 +1,5 @@
 // Prototype Inheritance
+// myPerson --> Person.prototype --> Object.prototype --> null
 
 class Person {
     constructor(firstName, lastName, age, likes = []) {
@@ -18,19 +19,63 @@ class Person {
         return bio
     }
 
-    setName(fullName) {
+    set fullName(fullName) {
         const names = fullName.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
     }
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
 }
 
-const me = new Person('Lasse', 'Ojala', 45, ['Teachin', 'Biking'])
-me.setName('Aleksis Turner')
-console.log(me.getBio())
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes) {
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    getBio() {
+        return `${this.fullName} is a ${this.position}`
+    }
+    getYearsLeft() {
+        return 65 - this.age
+    }
+}
 
-const two = new Person('Tim', 'Turner', 39)
-console.log(two.getBio())
+class Student extends Person {
+    constructor(firstName, lastName, age, points, likes) {
+        super(firstName, lastName, age, likes)
+        this.points = points
+    }
+    getBio() {
+        // if(this.points >= 70) {
+        //     return `${this.firstName} is passing the exam`
+        // }
+        // return `${this.firstName} is failing the exam` 
+
+        const status = this.points >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the exam`
+    }
+    updateGradePoints(pointsToAdd) {
+        this.points += pointsToAdd
+    }
+}
+
+const me = new Employee('Lasse', 'Ojala', 45, 'Teacher', ['Teaching', 'Biking'])
+me.fullName = 'Clancy Turner'
+console.log(me.getBio())
+// console.log('-------------------')
+// me.updateGradePoints(-10)
+// console.log(me.getBio())
+
+// const me = new Employee('Lasse', 'Ojala', 45, 'Teacher', ['Teaching', 'Biking'])
+// me.setName('Aleksis Turner')
+// console.log(me.getBio())
+// console.log(me.getYearsLeft())
+
+// const two = new Person('Tim', 'Turner', 39)
+// console.log(two.getBio())
 
 
 
