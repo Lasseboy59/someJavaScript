@@ -26,7 +26,7 @@ window.addEventListener('keypress', (e) => {
     statusEl.textContent =  game1.GameStatus
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle("2",(error, puzzle) => {
     if(error) {
         console.log(`Error: ${error}`)
     } else{
@@ -34,35 +34,10 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-
-// Makng an HTTP request
-
-
-// const countryRequest = new XMLHttpRequest()
-// const countryCode = 'FI'
-
-// countryRequest.addEventListener('readystatechange', (e) => {
-//     if(e.target.readyState === 4 && e.target.status === 200) {
-//         const data = JSON.parse(e.target.responseText)
-//         let countries = e.target.responseText
-//         let code = 'alpha2code'
- 
-//         const country = data.find((country) => {
-//             if (country.alpha2Code === countryCode) {
-//                 return true
-//             } else {
-//                 return false
-//             }
-//         })
-
-//         console.log(`Country code [${countryCode}] found: ${country.name}`)
-
-        
-//     } else if(e.target.readyState === 4) {
-//         console.log('And error has taken place')
-//     }
-// })
-
-// countryRequest.open('GET','http://restcountries.eu/rest/v2/all')
-// countryRequest.send()
-
+getCountryDetails("FI",(error, country) => {
+    if(error) {
+        console.log(`Error: ${error}`)
+    } else{
+        console.log(`Country name: ${country.name} population: ${country.population}`)
+    }
+})
