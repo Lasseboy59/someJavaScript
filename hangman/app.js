@@ -39,3 +39,17 @@ getCountryDetails('FI').then((country) => {
 console.log(`Error: ${err}`)
 })
 
+getLocation().then((data) => {
+    console.log(`You are currently in ${data.city} ${data.region} country is ${data.country}`)
+}).catch((err) => {
+    console.log(err)
+})
+
+// Promise chaining 
+getLocation().then((data) => {
+    return getCountryDetails(data.country)
+}).then((data) => {
+    console.log(`You are in ${data.name}`)
+}).catch((err) => {
+    console.log(err)
+})

@@ -74,3 +74,10 @@ getDataPromise(10).then((data) => {
 }).catch((err) => {
     console.log(err)
 })
+
+// Promise chaining 2
+getDataPromise(2).then((data) => {
+    return data
+}).then((data) => {
+    console.log(data)
+})
