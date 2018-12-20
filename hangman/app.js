@@ -26,18 +26,14 @@ window.addEventListener('keypress', (e) => {
     statusEl.textContent =  game1.GameStatus
 })
 
-getPuzzle("2",(error, puzzle) => {
-    if(error) {
-        console.log(`Error: ${error}`)
-    } else{
-        console.log(puzzle)
-    }
+getPuzzle('2').then((puzzle) => {
+    console.log(puzzle)
+}, (err) => {
+    console.log(`Error: ${err}`)
 })
 
-getCountryDetails("FI",(error, country) => {
-    if(error) {
-        console.log(`Error: ${error}`)
-    } else{
-        console.log(`Country name: ${country.name} population: ${country.population}`)
-    }
+getCountryDetails('FI').then((country) => {
+    console.log(`Country name: ${country.name}, population: ${country.population}`)
+}, (err) => {
+    console.log(`Error: ${err}`)
 })
