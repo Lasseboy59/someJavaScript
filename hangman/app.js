@@ -26,12 +26,6 @@ window.addEventListener('keypress', (e) => {
     statusEl.textContent =  game1.GameStatus
 })
 
-// getPuzzle('2').then((data) => {
-//     console.log(data.puzzle)
-// }, (err) => {
-//     console.log(`Error: ${err}`)
-// })
-
 getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
 }).catch((err) => {
@@ -45,23 +39,3 @@ getCountryDetails('FI').then((country) => {
 console.log(`Error: ${err}`)
 })
 
-
-// getCountryDetails('FI').then((country) => {
-//     console.log(`Country name: ${country.name}, population: ${country.population}`)
-// }, (err) => {
-//     console.log(`Error: ${err}`)
-// })
-
-
-
-// fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
-//     if(response.status === 200) {
-//         return response.json()
-//     } else {
-//         throw new Error('Unable to fetch the puzzle')
-//     }
-// }).then((data) => {
-//     console.log(data.puzzle)
-// }).catch((err) => {
-//     console.log(err)
-// })
