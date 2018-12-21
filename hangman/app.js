@@ -11,26 +11,41 @@
 // Request - What do we want to do
 // Response - What was actually done
 
-const game1 = new Hangman('Cat', 2)
-
 const puzzleEl = document.querySelector('#puzzle')
 const statusEl = document.querySelector('#status')
+let game1 
 
-puzzleEl.textContent = game1.puzzle
-statusEl.textContent =  game1.GameStatus
+// puzzleEl.textContent = game1.puzzle
+// statusEl.textContent =  game1.GameStatus
 
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode)
     game1.addGuess(guess)
-    puzzleEl.textContent = game1.puzzle
-    statusEl.textContent =  game1.GameStatus
+    render()
+    // puzzleEl.textContent = game1.puzzle
+    // statusEl.textContent =  game1.GameStatus
 })
 
-getPuzzle('2').then((puzzle) => {
-    console.log(puzzle)
-}).catch((err) => {
-    console.log(err)
-})
+const render = () => {
+    puzzleEl.textContent = game1.puzzle
+    statusEl.textContent =  game1.GameStatus
+}
+
+const startGame = async () => {
+    const puzzle = await getPuzzle('2')
+    game1 = new Hangman(puzzle, 5)
+    render()
+}
+
+document.querySelector('#reset').addEventListener('click', startGame)
+
+startGame()
+
+// getPuzzle('2').then((puzzle) => {
+//     console.log(puzzle)
+// }).catch((err) => {
+//     console.log(err)
+// })
 
 // getCurrentCountry().then((country) => {
 //     console.log(country.name)
