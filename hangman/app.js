@@ -15,15 +15,10 @@ const puzzleEl = document.querySelector('#puzzle')
 const statusEl = document.querySelector('#status')
 let game1 
 
-// puzzleEl.textContent = game1.puzzle
-// statusEl.textContent =  game1.GameStatus
-
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode)
     game1.addGuess(guess)
     render()
-    // puzzleEl.textContent = game1.puzzle
-    // statusEl.textContent =  game1.GameStatus
 })
 
 const render = () => {
