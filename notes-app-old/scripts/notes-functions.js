@@ -54,7 +54,7 @@ const generateNoteDOM = (note) => {
     return noteEl
 }
 
-// Sort ypur notes by one of three ways
+// Sort your notes by one of three ways
 const sortNotes = (notes, sortBy) => {
     if(sortBy === 'byEdited') {
         return notes.sort((a, b) => {
