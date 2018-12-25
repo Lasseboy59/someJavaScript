@@ -20,9 +20,12 @@ import { sortTodos, getTodos } from './todos'
 const renderTodos = () => {
     const todoEl = document.querySelector('#todos')
     const filters = getFilters()
-    const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
+    const todos = sortTodos(filters.sortBy)
 
-    notesEl.innerHTML = ''
+    // OBS ! lines below
+    const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
+    // const filteredTodos = getTodos()
+    todoEl.innerHTML = ''
 
     if(filteredTodos.length > 0) {
         filteredTodos.forEach((note) => {

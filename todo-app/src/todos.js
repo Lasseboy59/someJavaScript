@@ -51,11 +51,13 @@ const createTodo = (text) => {
     const id = uuidv4()
     const timestamp = moment().valueOf()
     todos.push({
-        id: uuidv4(),
+        id: id,
         text: text, 
         completed: false 
     })
     saveTodos()
+
+    return id
 }
 
 // Remove a todo from the list
