@@ -19,26 +19,37 @@ import { sortTodos, getTodos } from './todos'
 // Render application todos based on filters
 const renderTodos = () => {
     const todoEl = document.querySelector('#todos')
-    const filters = getFilters()
-    const todos = sortTodos(filters.sortBy)
+    // let filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
+    let filteredTodos = todos
 
-    // OBS ! lines below
-    const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
-    // const filteredTodos = getTodos()
+    // filteredTodos = filteredTodos.filter((todo) => {
+    //     if(filters.hideCompleted){
+    //         return !todo.completed
+    //     } else {
+    //         return true
+    //     }
+    // })
+
+    // const incompleteTodos = filteredTodos.filter((todo) =>!todo.completed)
+
     todoEl.innerHTML = ''
+    // todoEl.appendChild(generateSummaryDOM(incompleteTodos))
+    todoEl.appendChild(generateSummaryDOM(todos))
 
-    if(filteredTodos.length > 0) {
-        filteredTodos.forEach((note) => {
+
+   if(filteredTodos.length > 0){
+    filteredTodos.forEach((todo) => {
+        
         const p = generateTodoDOM(todo)
         todoEl.appendChild(p)
-        })
-    } else {
-        const emptyMessage = document.createElement('p')
-        emptyMessage.textContent = 'No todos to show'
-        emptyMessage.classList.add('empty-message')
-        todoEl.appendChild(emptyMessage)
-    }
+    })
+   } else {
+        const messageEl = document.createElement('p')
+        messageEl.classList.add('empty-message')
+        messageEl.textContent = 'There are NOPE todos to show'
+        todoEl.appendChild(messageEl)
 
+   }
 }
 
 // Get the DOM elements for an individual note
@@ -89,7 +100,7 @@ const generateTodoDOM = (todo) => {
 
 // Get the DOM elements for list summary
 const generateSummaryDOM = (incompleteTodos) => {
-    const summary = document.createElement('h2')
+    let summary = document.Element('h2')
     summary.classList.add('list-title')
     incompleteTodos.length >= 1 ? summary.textContent= `You have ${incompleteTodos.length} todos left` : 
     summary.textContent = `You have ${incompleteTodos.length} todo left`

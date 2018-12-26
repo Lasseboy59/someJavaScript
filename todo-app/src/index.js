@@ -17,7 +17,7 @@
 
 import { setFilters, getFilters } from './filters'
 import { loadTodos ,saveTodos, getTodos, createTodo, removeTodo, toggleTodo } from './todos'
-import { renderTodos } from './views'
+import { renderTodos, generateSummaryDOM } from './views'
 
 const todos = getTodos()
 
@@ -30,6 +30,7 @@ renderTodos()
 
 document.querySelector('#create-todo').addEventListener('submit', (e) => {
     const text = e.target.elements.text.value.trim()
+    console.log(text)
     createTodo(text)
 })
 

@@ -50,6 +50,7 @@ const getTodos = () => todos
 const createTodo = (text) => {
     const id = uuidv4()
     const timestamp = moment().valueOf()
+    console.log('createTodo: ' + text)
     todos.push({
         id: id,
         text: text, 
@@ -79,4 +80,20 @@ const toggleTodo = (id) => {
     }
 }
 
-export { loadTodos ,saveTodos, getTodos, createTodo, removeTodo, toggleTodo }
+
+const sortTodos = function(todos){
+    todos.sort(function(a, b){
+        if(!a.completed && b.completed) {
+            return -1;
+        } else if(!b.completed && a.completed) {
+            return 1
+        } else {
+            return 0;
+        }
+    })
+}
+
+sortTodos(todos);
+console.log(todos);
+
+export { loadTodos ,saveTodos, getTodos, createTodo, removeTodo, toggleTodo, sortTodos }
