@@ -27,19 +27,12 @@
 // Make sure to call loadTodos and setup the exports
 
 import uuidv4 from 'uuid/v4'
-import moment from 'moment'
 
 let todos = []
 
 // Read exsisting todos from local storage
 const loadTodos = () => {
     const todosJSON = localStorage.getItem('todos')
-
-    // try {
-    //     return todosJSON ? JSON.parse(todosJSON) : []
-    // } catch (e) {
-    //     return []
-    // }
 
     try {
         todos =  todosJSON ? JSON.parse(todosJSON) : []
@@ -49,14 +42,13 @@ const loadTodos = () => {
 }
 
 // Save todos to local storage
-// const saveTodos = (todos) => localStorage.setItem('todos', JSON.stringify(todos))
 const saveTodos = () => localStorage.setItem('todos', JSON.stringify(todos))
 
 const getTodos = () => todos
 
 const createTodo = (text) => {
     const id = uuidv4()
-    const timestamp = moment().valueOf()
+    // const timestamp = moment().valueOf()
     console.log('createTodo: ' + text)
     todos.push({
         id: id,
@@ -64,8 +56,6 @@ const createTodo = (text) => {
         completed: false 
     })
     saveTodos()
-
-    // return id
 }
 
 // Remove a todo from the list
@@ -89,21 +79,6 @@ const toggleTodo = (id) => {
 }
 
 
-// const sortTodos = function(todos){
-//     todos.sort(function(a, b){
-//         if(!a.completed && b.completed) {
-//             return -1;
-//         } else if(!b.completed && a.completed) {
-//             return 1
-//         } else {
-//             return 0;
-//         }
-//     })
-// }
-
-// sortTodos(todos);
-
 loadTodos()
-// console.log(todos);
 
-export { loadTodos ,saveTodos, getTodos, createTodo, removeTodo, toggleTodo }
+export { getTodos, createTodo, removeTodo, toggleTodo}
