@@ -41,10 +41,12 @@ class Hangman {
         if(this.status === 'playing') {
             this.guess = guess.toLowerCase()
             const isUnigue = !this.guessedLetters.includes(guess)
-            const isBadGuess = !this.word.includes(guess)
-            
+            const isBadGuess = !this.word.includes(guess)    
+
             if(!this.guessedLetters.includes(guess)){
-                this.guessedLetters.push(guess)
+                this.guessedLetters = [...this.guessedLetters, guess]
+                // this.guessedLetters.push(guess)
+
             }
         
             if(isUnigue && isBadGuess){
