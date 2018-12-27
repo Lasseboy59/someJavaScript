@@ -57,3 +57,10 @@ document.querySelector('#hide-box').addEventListener('change', (e) => {
     renderTodos()
 })
 
+window.addEventListener('storage', (e) =>{
+    if(e.key === 'todos') {
+        loadTodos()
+        renderTodos()
+    }
+})
+
