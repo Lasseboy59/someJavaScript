@@ -3,6 +3,8 @@ import { updateNote, removeNote } from './notes'
 
 const titleElement = document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
+const recipeElement = document.querySelector('#note-recipe')
+
 const removeElement = document.querySelector('#remove-note')
 const lastEdited = document.querySelector('#last-edited')
 const noteId = location.hash.substring(1)
@@ -13,14 +15,19 @@ titleElement.addEventListener('input', (e) => {
     const note = updateNote(noteId, {
         title: e.target.value
     }) 
-    lastEdited.textContent = generateLastEdited(note.updatedAt)
 })
 
 bodyElement.addEventListener('input', (e) => {
     const note = updateNote(noteId, {
         body: e.target.value
     })
-    lastEdited.textContent = generateLastEdited(note.updatedAt)
+    // lastEdited.textContent = generateLastEdited(note.updatedAt)
+})
+
+recipeElement.addEventListener('input', (e) => {
+    const note = updateNote(noteId, {
+        body: e.target.value
+    })
 })
 
 removeElement.addEventListener('click', (e) => {

@@ -23,7 +23,7 @@ const generateNoteDOM = (note) => {
     noteEl.classList.add('list-item')
 
     // Setup the status message
-    statusEl.textContent = generateLastEdited(note.updatedAt)
+    // statusEl.textContent = generateLastEdited(note.updatedAt)
     statusEl.classList.add('list-item__subtitle')
     noteEl.appendChild(statusEl)
 
@@ -56,7 +56,8 @@ const renderNotes = () => {
 const initializeEditPage = (noteId) => {
     const titleElement = document.querySelector('#note-title')
     const bodyElement = document.querySelector('#note-body')
-    const lastEdited = document.querySelector('#last-edited')
+    const recipeElement = document.querySelector('#note-recipe')
+    // const lastEdited = document.querySelector('#last-edited')
     const notes = getNotes()
     const note = notes.find((note) => note.id === noteId)
     
@@ -66,10 +67,16 @@ const initializeEditPage = (noteId) => {
     
     titleElement.value = note.title
     bodyElement.value = note.body
-    lastEdited.textContent = generateLastEdited(note.updatedAt)
+    recipeElement.value = note.incredients
+
+    console.log(titleElement.value)
+    console.log(bodyElement.value)
+    console.log(recipeElement.value)
+    
+    // lastEdited.textContent = generateLastEdited(note.updatedAt)
 }
 
 // Generate the last edited message
-const generateLastEdited = (timestamp) => `Last edited ${moment(timestamp).fromNow()}`
+// const generateLastEdited = (timestamp) => `Last edited ${moment(timestamp).fromNow()}`
 
-export { generateNoteDOM, renderNotes, generateLastEdited, initializeEditPage }
+export { generateNoteDOM, renderNotes, /* generateLastEdited*/ initializeEditPage }

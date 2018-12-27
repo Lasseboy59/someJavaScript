@@ -30,9 +30,17 @@ const createNote = () => {
          createdAt: timestamp,
          updatedAt: timestamp,
          title: '',
-         body: ''
+         body: '',
+         incredients: 'mustard'
+        //  incredients: {
+        //      text: 'mustard',
+        //      inStore: false
+        //  }
     })
     saveNotes()
+    // console.log('**********')
+    // console.log(notes[0])
+    // console.log('**********')
 
     return id
 }
