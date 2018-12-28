@@ -11,18 +11,18 @@ renderNotes(notes, filters)
 
 
 document.querySelector('#create-note').addEventListener('click', (e) => {
-    const idVar = uuidv4()
+    const id = uuidv4()
     const timestamp = moment().valueOf()
     notes.push({
-         id: idVar,
-         createdAt: timestamp,
-         updatedAt: timestamp,
+         id: id,
          title: '',
          body: '',
          recipe: {
              ingredients: '',
              available: false
-         }
+         },
+         createdAt: timestamp,
+         updatedAt: timestamp,
 
     })
     saveNotes(notes)
