@@ -19,7 +19,11 @@ document.querySelector('#create-note').addEventListener('click', (e) => {
          updatedAt: timestamp,
          title: '',
          body: '',
-         recipe:''
+         recipe: {
+             ingredients: '',
+             available: false
+         }
+
     })
     saveNotes(notes)
     location.assign(`edit.html#${idVar}`)
@@ -29,11 +33,6 @@ document.querySelector('#create-note').addEventListener('click', (e) => {
 document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value
     renderNotes(notes, filters)
-})
-
-document.querySelector('#filter-by').addEventListener('change', (e) => {
-    filters.sortBy = e.target.value
-    renderNotes(notes,filters)
 })
 
 
