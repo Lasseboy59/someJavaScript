@@ -67,11 +67,12 @@ window.addEventListener('storage', (e) =>{
 })
 
 let id =  uuidv4()
+const timestamp = moment().valueOf()
 
 const addNote = () => {
 
     const newNote = {
-        // const timestamp = moment().valueOf(),
+        // timestamp = moment().valueOf(),
         id: id,
         title: '',
         body: '',

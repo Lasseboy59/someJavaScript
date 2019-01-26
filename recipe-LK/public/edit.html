@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+    <body>
+
+
+
+    <header class="main-header">
+
+            <div class="container">
+                <a href="/index.html" class="main-header__logo">
+                    <img src="./images/recipe.svg" alt="">
+                </a>
+                <a href="/index.html" class="main-header__title">My Recipes</a>
+            </div>
+        
+        </header>
+    
+        <main>
+            
+            <section class="actions">
+                <section class="actions__container actions__container--spaced">
+                        <a href="/index.html">My Recipes</a>
+                        <span id="last-edited"></span>
+                        <div class="main-section__search">
+                            <span id="last-edited"></span>
+                        </div>
+                    </section>
+            </section>
+
+    
+            <section class="main-edit-section">
+                <div class="main-edit-section__container">
+    
+                    <input id="recipe-title" type="text" placeholder="Recipe title">
+                    <textarea id="recipe-body" cols="30" rows="10" placeholder="Enter yout great recipe instructions"></textarea>
+                    
+                    <p class="ingredient-title">Ingredients</p>
+                    <div id="ingredients"></div>
+                    
+                    <form action="#" id="ingredient-form">
+                        <input name="addIngridient" type="text" placeholder="Add ingredient">
+                        <button class="btn btn-ingredient">Add</button>
+                    </form>
+    
+                    <div class="ingredient-basic-btn">
+                        <button class="btn btn-ingredient btn-save" id="save-recipe">Save</button>
+                        <button class="btn btn-ingredient btn-remove" id="remove-recipe">Remove</button>
+                    </div>
+                    
+                </div>
+            </section>
+    
+        </main>
+
+
+
+
+
+        <script src="/scripts/edit-bundle.js"></script>
+
+    </body>
+</html>
